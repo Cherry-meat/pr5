@@ -21,13 +21,26 @@ public class Main {
                 System.out.println("Решение уравнения y = (a + b)/(a - b) при значение a = " + this.a + " b = " + this.b + " будет " + y);
             }
         }
-        void urv3(){
+        double urv3(){
             if (this.a ==0 || this.x ==0) {
-                System.out.println("Деление на 0 в уравнении y = (a * x / b).");
+                return -1;
             }
             else{
                 double y = (this.a * this.x / this.b);
-                System.out.println("Решение уравнения y = (a * x / b) при значение a = " + this.a + " b = " + this.b +" x = "+ x + " будет " + y);
+                if (y == 1 || y == 0){
+                    return 1;
+                }
+                else if(y < 0){
+                    return -1;
+                }
+                else{
+                    int chiclo = 1;
+                    for(int i = 1; i <=y; i++){
+                        chiclo*=i;
+                    }
+                    return chiclo;
+                }
+
             }
         }
     }
@@ -42,6 +55,7 @@ public class Main {
         uravn primer =  new uravn(x_pr,a_pr,b_pr);
         primer.urv1();
         primer.urv2();
-        primer.urv3();
+        double y = primer.urv3();
+        System.out.println("Решение уравнения y = (a * x / b)! будет " + y);
     }
 }
